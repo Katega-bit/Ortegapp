@@ -7,22 +7,25 @@ import com.example.ortegapp_font.model.UserResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.create
 
 class LoginRepository {
 
-    //private lateinit var retrofit : RetrofitHelper
+    private val retrofit = RetrofitHelper
 
-    suspend fun login(username:String, password:String):UserResponse?{
-       val retrofit = RetrofitHelper.apiService
-        val response = retrofit.login(LoginRequest(username, password))
-
-        if (response.isSuccessful){
-            return response.body()
-                Log.i("Carlos", response.body().toString())
-        }
-        else{
-          return null
-        }
+    suspend fun login(username: String, password: String): UserResponse {
+        val response = retrofit.getRetrofit().create(LoginService::class.java)
+            .login(LoginRequest(username, password))
+        Log.e("LoginWorks", response.body().toString())
+        return response.body()!!
     }
 
+    suspend fun userLogged(token: String): Boolean {
+        val response = retrofit.getRetrofit().create(LoginService::class.java).userData(token)
+
+        if (response.isSuccessful) {
+            return true
+        }
+        return false
+    }
 }

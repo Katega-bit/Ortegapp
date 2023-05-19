@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Ortegappfont" parent="Base.Theme.Ortegappfont" />
+
+    <style name="Theme.AppCompat.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ortegapp_logo</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+        <item name="postSplashScreenTheme">@style/Theme.Ortegappfont</item>
+
+    </style>
 </resources>
