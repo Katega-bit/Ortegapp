@@ -29,18 +29,23 @@ class SplashScreenActivity : AppCompatActivity() {
 
     }
 
-    private suspend fun loginValidator() {
+     suspend fun loginValidator() {
 
-       val response = repository.userLogged(tokenManager.getToken()!!)
+       var response = false
+        if (!tokenManager.getToken().isNullOrEmpty()){
+            response = repository.userLogged(tokenManager.getToken()!!)
+        }
 
         if (response){
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
+         else{
+            intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
-        intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 }

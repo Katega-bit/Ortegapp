@@ -4,10 +4,7 @@ import android.util.Log
 import com.example.ortegapp_font.core.RetrofitHelper
 import com.example.ortegapp_font.model.LoginRequest
 import com.example.ortegapp_font.model.UserResponse
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.create
+import com.example.ortegapp_font.service.LoginService
 
 class LoginRepository {
 
@@ -21,7 +18,7 @@ class LoginRepository {
     }
 
     suspend fun userLogged(token: String): Boolean {
-        val response = retrofit.getRetrofit().create(LoginService::class.java).userData(token)
+        val response = retrofit.getRetrofit().create(LoginService::class.java).userData("Bearer "+token)
 
         if (response.isSuccessful) {
             return true

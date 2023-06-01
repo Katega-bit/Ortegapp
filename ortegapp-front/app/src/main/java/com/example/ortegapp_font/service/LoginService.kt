@@ -1,4 +1,4 @@
-package com.example.ortegapp_font.repository
+package com.example.ortegapp_font.service
 
 import com.example.ortegapp_font.model.LoginRequest
 import com.example.ortegapp_font.model.UserResponse
@@ -13,7 +13,7 @@ interface LoginService {
     @POST("auth/login")
     suspend fun login(@Body loginRequest: LoginRequest): Response<UserResponse>
 
-    @GET("me")
+    @GET("/me")
     suspend fun userData(@Header("Authorization") token : String): Response<UserResponse>
 
 }

@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         tokenManager = TokenManager(this)
         setContentView(bindind.root)
 
+        navigateToRegister()
         bindind.loginButton.setOnClickListener {
         CoroutineScope(Dispatchers.Main).launch {
 
@@ -32,14 +33,12 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
-
-
     suspend fun login(){
 
                 val username = bindind.etEmail
                 val password = bindind.etPassword
                 val response =repository.login(username.text.toString(), password.text.toString())
-                val token = response.token!!
+                val token = response.token.toString()
                 tokenManager.saveToken(token)
 
                 if (tokenManager.getToken()==response.token){
@@ -47,8 +46,13 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+    }
 
-            }
+    fun navigateToRegister(){
+        bindind.tvRegister.setOnClickListener {
+        intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+        }
 
-
+    }
 }

@@ -9,9 +9,8 @@
 
     <style name="Theme.AppCompat.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ortegapp_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/logo_foreground</item>
         <item name="windowSplashScreenAnimationDuration">800</item>
         <item name="postSplashScreenTheme">@style/Theme.Ortegappfont</item>
-
     </style>
 </resources>
