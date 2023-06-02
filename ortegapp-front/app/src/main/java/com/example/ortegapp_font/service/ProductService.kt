@@ -9,5 +9,5 @@ import retrofit2.http.Query
 interface ProductService {
 
     @GET("producto/")
-    suspend fun getProudct(@Header("Authorization") token: String, @Query ("page") page : Int) : Response<ProductoResponse>
+    suspend fun getProudct(@Query ("page") page : Int, @Header("Authorization") token: String) : Response<ProductoResponse>
 }

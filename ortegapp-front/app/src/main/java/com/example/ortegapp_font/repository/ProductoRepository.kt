@@ -11,7 +11,7 @@ class ProductoRepository {
     val retrofit = RetrofitHelper
 
     suspend fun getProduct(page : Int, token : String): Response<ProductoResponse>{
-        val response = retrofit.getRetrofit().create(ProductService::class.java).getProudct("Bearer $token", page)
+        val response = retrofit.getRetrofit().create(ProductService::class.java).getProudct(page, "Bearer $token")
         Log.e("code ", response.code().toString())
         return response
     }

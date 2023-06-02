@@ -20,8 +20,8 @@ class ProductoPagingSource(private val repository: ProductoRepository, private v
 
             LoadResult.Page(
                 data = responseData,
-                prevKey = if(page == 1 ) null else -1,
-                nextKey = page.plus(1)
+                prevKey = if(page == 0 ) null else -1,
+                nextKey = if (page == 0)null else page + 1
             )
         }catch (e : Exception){
             LoadResult.Error(e)

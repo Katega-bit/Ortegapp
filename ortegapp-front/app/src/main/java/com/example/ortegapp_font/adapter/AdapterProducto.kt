@@ -8,15 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ortegapp_font.databinding.ItemListProductoBinding
 import com.example.ortegapp_font.model.Producto
 
-class AdapterProducto() : PagingDataAdapter<Producto, AdapterProducto.ProductoViewHolder>(ProductoDiffCallBack()) {
+class AdapterProducto : PagingDataAdapter<Producto, AdapterProducto.ProductoViewHolder>(diffCallBack) {
 
-
-
-    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item!!)
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         return ProductoViewHolder(
@@ -24,23 +17,30 @@ class AdapterProducto() : PagingDataAdapter<Producto, AdapterProducto.ProductoVi
         )
     }
 
-    class ProductoDiffCallBack : DiffUtil.ItemCallback<Producto>(){
-        override fun areItemsTheSame(oldItem: Producto, newItem: Producto): Boolean {
-            return oldItem.id == newItem.id
-        }
+    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.binding.apply {
 
-        override fun areContentsTheSame(oldItem: Producto, newItem: Producto): Boolean {
-            return oldItem == newItem
-        }
-
-    }
-
-    class ProductoViewHolder(private val binding : ItemListProductoBinding) :  RecyclerView.ViewHolder(binding.root){
-        fun bind(item : Producto){
-            binding.productoName.text = item.nombre
-
-
+            holder.binding.productoName.text = "${item?.nombre}"
         }
 
     }
+
+
+    companion object{
+        val diffCallBack= object : DiffUtil.ItemCallback<Producto>(){
+            override fun areItemsTheSame(oldItem: Producto, newItem: Producto): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Producto, newItem: Producto): Boolean {
+                return oldItem == newItem
+            }
+
+        }
+    }
+
+    inner class ProductoViewHolder(val binding : ItemListProductoBinding) :  RecyclerView.ViewHolder(binding.root)
+
+
 }
