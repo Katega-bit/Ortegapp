@@ -1,6 +1,8 @@
 package com.example.ortegapp_font.service
 
 import com.example.ortegapp_font.model.LoginRequest
+import com.example.ortegapp_font.model.RegisterRequest
+import com.example.ortegapp_font.model.RegisterResponse
 import com.example.ortegapp_font.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -15,5 +17,8 @@ interface LoginService {
 
     @GET("/me")
     suspend fun userData(@Header("Authorization") token : String): Response<UserResponse>
+
+    @POST("/auth/register")
+    suspend fun register(@Body registerRequest: RegisterRequest): Response<RegisterResponse>
 
 }
