@@ -8,7 +8,7 @@ data class Producto(
     @SerializedName("foto"        ) var foto        : String?           = null,
     @SerializedName("tipo"        ) var tipo        : String?           = null,
     @SerializedName("descripcion" ) var descripcion : String?           = null,
-    @SerializedName("precio"      ) var precio      : Int?              = null,
+    @SerializedName("precio"      ) var precio      : Double?           = null,
     @SerializedName("likes"       ) var likes       : ArrayList<String> = arrayListOf(),
     @SerializedName("comentarios" ) var comentarios : ArrayList<String> = arrayListOf()
 )
