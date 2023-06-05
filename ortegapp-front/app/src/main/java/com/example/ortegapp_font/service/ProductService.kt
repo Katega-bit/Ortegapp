@@ -17,8 +17,10 @@ interface ProductService {
     @GET("producto/{id}")
     suspend fun getProudctById(@Header("Authorization") token: String, @Path("id") id : Int) : Response<Producto>
 
+    @GET("/melikes/")
+    suspend fun getMeLikes(@Header("Authorization") token: String): Response<ProductoResponse>
+
     @POST("producto/like/{id}")
     suspend fun likeProduct(@Path("id")id : Int, @Header("Authorization") token: String) : Response<Producto>
-
 
 }
