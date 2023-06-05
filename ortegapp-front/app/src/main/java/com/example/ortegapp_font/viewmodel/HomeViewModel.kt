@@ -1,32 +1,55 @@
 package com.example.ortegapp_font.viewmodel
 
 import android.content.Context
+import android.util.Log
+import android.widget.Button
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import androidx.paging.liveData
 import com.example.ortegapp_font.core.TokenManager
-import com.example.ortegapp_font.paging.ProductoPagingSource
+import com.example.ortegapp_font.model.Producto
+import com.example.ortegapp_font.model.ProductoResponse
 import com.example.ortegapp_font.repository.ProductoRepository
+import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
-    private lateinit var token : TokenManager
     private val repository = ProductoRepository()
+    private lateinit var tokenManager: TokenManager
 
-   // val productoList = getProducts().cachedIn(viewModelScope)
+    private val _productoLiveData = MutableLiveData<ProductoResponse?>()
+    val productoLiveData : LiveData<ProductoResponse?> = _productoLiveData
 
 
-    val lista = Pager(PagingConfig(1)){
-        ProductoPagingSource(repository, token.getToken()!!)
-    }.flow.cachedIn(viewModelScope)
 
-    fun tokenManagerInit(context: Context){
-        token = TokenManager(context)
+    fun fetchProductos(){
+        viewModelScope.launch{
+            val response =   repository.getProduct(tokenManager.getToken()!!)
+            _productoLiveData.postValue(response.body())
+        }
     }
 
-   // fun getProducts() = Pager( config = PagingConfig(pageSize = 1, maxSize = 100),
-    //pagingSourceFactory = {ProductoPagingSource(repository, token.getToken()!!)}).liveData
+    fun initToken(context: Context){
+        tokenManager = TokenManager(context)
+    }
+
+    suspend fun likeProduct(id : Int){
+        val response = repository.likeProduct(id, tokenManager.getToken()!!)
+        Log.e("Like", response.body().toString())
+    }
+
+    private val _productoIdLiveData = MutableLiveData<Producto?>()
+    val productoIdLiveData : LiveData<Producto?> = _productoIdLiveData
+
+    fun productoByid(id : Int){
+        viewModelScope.launch {
+            val response = repository.getProductById(tokenManager.getToken()!!, id)
+            _productoIdLiveData.postValue(response.body())
+        }
+
+    }
 
 }
