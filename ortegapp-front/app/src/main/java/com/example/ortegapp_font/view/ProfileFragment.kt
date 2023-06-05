@@ -12,6 +12,7 @@ import com.example.ortegapp_font.R
 import com.example.ortegapp_font.core.TokenManager
 import com.example.ortegapp_font.databinding.FragmentProfileBinding
 import com.example.ortegapp_font.repository.LoginRepository
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,11 +56,7 @@ class ProfileFragment : Fragment() {
 
         binding.fullName.text = response?.fullName
         binding.username.text =  response?.username
-        Glide.with(requireContext())
-            .load(response?.avatar)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .centerCrop()
-            .into(binding.avatar)
+        Picasso.get().load(response?.avatar).into(binding.avatar)
 
     }
 
