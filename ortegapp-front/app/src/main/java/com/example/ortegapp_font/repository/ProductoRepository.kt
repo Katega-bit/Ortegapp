@@ -29,4 +29,10 @@ class ProductoRepository {
         Log.e("producto", response.body().toString())
         return response
     }
+
+    suspend fun getMyLikes(token : String) : Response<ProductoResponse>{
+        val response = retrofit.getMeLikes("Bearer $token")
+        Log.e("Me Likes", response.body().toString())
+        return response
+    }
 }
