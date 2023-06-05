@@ -14,10 +14,12 @@ import com.example.ortegapp_font.adapter.AdapterProducto
 import com.example.ortegapp_font.databinding.FragmentHomeBinding
 import com.example.ortegapp_font.databinding.ItemListProductoBinding
 import com.example.ortegapp_font.model.Producto
+import com.example.ortegapp_font.model.ProductoResponse
 import com.example.ortegapp_font.viewmodel.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class HomeFragment : Fragment() {
@@ -42,7 +44,7 @@ class HomeFragment : Fragment() {
 
     fun init(){
         fetchProduct()
-        adapter = AdapterProducto(emptyList(),{likeProduct(it)},{navigateToDetail(it)})
+        adapter = AdapterProducto(emptyList(),{likeProduct(it)},{navigateToDetail(it)}, viewModel)
         binding.productoList.setHasFixedSize(true)
         binding.productoList.layoutManager = LinearLayoutManager(requireContext())
         binding.productoList.adapter = adapter
@@ -51,19 +53,34 @@ class HomeFragment : Fragment() {
 
 
     fun fetchProduct(){
-
         viewModel.initToken(requireContext())
         viewModel.fetchProductos()
-        viewModel.productoLiveData.observe(viewLifecycleOwner){
-                response ->
-            if (response == null){
+        viewModel.productoLiveData.observe(viewLifecycleOwner) { response ->
+            if (response == null) {
                 Toast.makeText(requireContext(), "Network call fail", Toast.LENGTH_LONG)
                 return@observe
             }
             adapter.updateList(response.content)
 
+            nombreRandom(response)
         }
+    }
 
+    fun nombreRandom(response : ProductoResponse){
+        CoroutineScope(Dispatchers.Main).launch {
+            val myLikes = viewModel.fetchMeLikes()
+            response.content.forEach{producto ->
+                myLikes.forEach{like ->
+                    if (producto.nombre == like.nombre){
+
+                        bindingItem.likeButton.setBackgroundResource(R.drawable.like)
+
+                    }
+                }
+            }
+
+            adapter.updateList(response.content)
+        }
 
     }
 

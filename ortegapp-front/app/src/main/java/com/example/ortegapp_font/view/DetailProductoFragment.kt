@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ortegapp_font.R
+import com.example.ortegapp_font.adapter.AdapterComment
 import com.example.ortegapp_font.databinding.FragmentDetailProductoBinding
 import com.example.ortegapp_font.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
@@ -16,6 +18,7 @@ class DetailProductoFragment : Fragment() {
 
     private var idProducto : Int = 0
     private val viewModel : HomeViewModel by viewModels()
+    private lateinit var adapterComment : AdapterComment
     private lateinit var binding : FragmentDetailProductoBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +43,21 @@ class DetailProductoFragment : Fragment() {
     }
 
     fun init(){
+        adapterComment = AdapterComment()
+        binding.commentList.setHasFixedSize(true)
+        binding.commentList.layoutManager = LinearLayoutManager(requireContext())
+        binding.commentList.adapter = adapterComment
         viewModel.initToken(requireContext())
         viewModel.productoByid(idProducto)
         viewModel.productoIdLiveData.observe(viewLifecycleOwner){
             binding.productDetailName.text = it?.nombre
             binding.productoDetailPrice.text = it?.precio.toString()+" €"
             Picasso.get().load(it?.foto).into(binding.productoDetailImage)
+
+
+            if (it != null){
+                adapterComment.updateList(it.comentarios)
+            }
 
         }
     }

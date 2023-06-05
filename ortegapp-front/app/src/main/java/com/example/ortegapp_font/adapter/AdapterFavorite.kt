@@ -44,7 +44,6 @@ class AdapterFavorite(var productoList: List<Producto> = emptyList(),
         fun bind(productoItem: Producto, likeListener : (Producto) -> Unit, onItemSelected: (Int) -> Unit){
             Picasso.get().load(productoItem.foto).into(binding.productoImage)
             binding.productoName.text = productoItem.nombre
-            var checked = false
 
             binding.likeButton.setOnClickListener {
                 likeListener(productoItem)

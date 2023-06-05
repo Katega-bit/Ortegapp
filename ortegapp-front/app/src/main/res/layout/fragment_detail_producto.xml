@@ -8,96 +8,146 @@
     tools:context=".view.DetailProductoFragment">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/backButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:src="@drawable/arrow_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
 
-        <ImageView
-            android:id="@+id/productoDetailImage"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"
-            android:layout_marginTop="100dp"/>
-
-        <TextView
-            android:id="@+id/productDetailName"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gomitas de fresa"
-            app:layout_constraintTop_toBottomOf="@id/productoDetailImage"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="20dp"/>
-        
-        <TextView
-            android:id="@+id/productoDetailPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="8.5€"
-            app:layout_constraintTop_toBottomOf="@id/productDetailName"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/red"
-            android:gravity="center"/>
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/productoDetailPrice"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="20dp">
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/remove"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productoDetailPrice" />
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/cantidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            app:layout_constraintLeft_toRightOf="@id/addButton"
-            app:layout_constraintTop_toBottomOf="@id/productoDetailPrice"/>
+            <ImageView
+                android:id="@+id/productoDetailImage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/removeButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/add"
-            app:layout_constraintLeft_toRightOf="@id/cantidad"
-            app:layout_constraintTop_toBottomOf="@id/productoDetailPrice" />
+            <TextView
+                android:id="@+id/productDetailName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Gomitas de fresa"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productoDetailImage" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Añadir al carrito"
-                android:layout_marginLeft="60dp"
-                />
+            <TextView
+                android:id="@+id/productoDetailPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="8.5€"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/productDetailName" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/cartOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productoDetailPrice">
+
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/remove"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/productoDetailPrice" />
+
+                <TextView
+                    android:id="@+id/cantidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="1"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/addButton"
+                    app:layout_constraintTop_toBottomOf="@id/productoDetailPrice" />
+
+                <Button
+                    android:id="@+id/removeButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/add"
+                    app:layout_constraintLeft_toRightOf="@id/cantidad"
+                    app:layout_constraintTop_toBottomOf="@id/productoDetailPrice" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:text="Añadir al carrito" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/commentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cartOptions"
+                android:layout_marginTop="20dp"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:background="@drawable/circle_image"
+                    android:layout_marginRight="10dp"
+
+                    />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:inputType="textMultiLine"
+                    android:background="@drawable/comment_box"
+                    android:hint="Escribe un comentario..."
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enviar"
+                    android:layout_gravity="bottom"
+/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_comment"
+                app:layout_constraintTop_toBottomOf="@id/commentContainer"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </FrameLayout>

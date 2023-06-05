@@ -10,12 +10,18 @@ import com.example.ortegapp_font.R
 import com.example.ortegapp_font.databinding.FragmentDetailProductoBinding
 import com.example.ortegapp_font.databinding.ItemListProductoBinding
 import com.example.ortegapp_font.model.Producto
+import com.example.ortegapp_font.model.ProductoResponse
+import com.example.ortegapp_font.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AdapterProducto(
     var productoList: List<Producto> = emptyList(),
     val likeListener: (Producto) -> Unit,
-    val onItemSelected : (Int) -> Unit
+    val onItemSelected : (Int) -> Unit,
+    val vm : HomeViewModel
 ) : RecyclerView.Adapter<AdapterProducto.ProductoViewHodler>() {
 
 
@@ -38,16 +44,16 @@ class AdapterProducto(
     }
 
     override fun onBindViewHolder(holder: ProductoViewHodler, position: Int) {
-        holder.bind(productoList[position], likeListener, onItemSelected)
+        holder.bind(productoList[position], likeListener, onItemSelected, vm)
     }
 
     class ProductoViewHodler(private val binding : ItemListProductoBinding): RecyclerView.ViewHolder(binding.root){
 
 
-        fun bind(productoItem: Producto, likeListener : (Producto) -> Unit, onItemSelected: (Int) -> Unit){
+        fun bind(productoItem: Producto, likeListener : (Producto) -> Unit, onItemSelected: (Int) -> Unit, vm : HomeViewModel){
             Picasso.get().load(productoItem.foto).into(binding.productoImage)
             binding.productoName.text = productoItem.nombre
-            var checked = false
+          var checked = false
 
             binding.likeButton.setOnClickListener {
                 likeListener(productoItem)
@@ -65,6 +71,16 @@ class AdapterProducto(
             binding.productoCard.setOnClickListener{
 
                 onItemSelected(productoItem.id!!)
+            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                val myLikes = vm.fetchMeLikes()
+                myLikes.forEach{like ->
+                    if (productoItem.nombre == like.nombre){
+                        binding.likeButton.setBackgroundResource(R.drawable.like)
+                        checked = true
+                        }
+                }
             }
         }
     }
