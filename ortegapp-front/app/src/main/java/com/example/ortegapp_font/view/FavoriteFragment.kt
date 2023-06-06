@@ -46,8 +46,8 @@ class FavoriteFragment : Fragment() {
 
 
     fun init(){
-        adapter = AdapterFavorite(emptyList(),{likeProduct(it)},{navigateToDetail(it)})
         fetchLikes()
+        adapter = AdapterFavorite(emptyList(),{likeProduct(it)},{navigateToDetail(it)})
         binding.likeList.setHasFixedSize(true)
         binding.likeList.layoutManager = LinearLayoutManager(requireContext())
         binding.likeList.adapter = adapter
@@ -66,6 +66,7 @@ class FavoriteFragment : Fragment() {
             }
             adapter.updateList(response.content)
 
+            adapter.notifyDataSetChanged()
 
         }
     }
@@ -73,9 +74,7 @@ class FavoriteFragment : Fragment() {
     fun likeProduct(producto : Producto){
         CoroutineScope(Dispatchers.IO).launch {
             viewModelHome.likeProduct(producto.id!!)
-
         }
-
 
     }
 

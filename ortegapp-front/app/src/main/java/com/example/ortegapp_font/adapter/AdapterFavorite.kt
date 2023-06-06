@@ -8,11 +8,12 @@ import com.example.ortegapp_font.R
 import com.example.ortegapp_font.databinding.ItemListFavoriteBinding
 import com.example.ortegapp_font.databinding.ItemListProductoBinding
 import com.example.ortegapp_font.model.Producto
+import com.example.ortegapp_font.viewmodel.FavoriteViewModel
 import com.squareup.picasso.Picasso
 
 class AdapterFavorite(var productoList: List<Producto> = emptyList<Producto>(),
                       val likeListener: (Producto) -> Unit,
-                      val onItemSelected : (Int) -> Unit)
+                      val onItemSelected : (Int) -> Unit,)
     : RecyclerView.Adapter<AdapterFavorite.FavoriteViewHolder>() {
 
     fun updateList(productoList : List<Producto>){
@@ -47,6 +48,7 @@ class AdapterFavorite(var productoList: List<Producto> = emptyList<Producto>(),
 
             binding.likeButton.setOnClickListener {
                 likeListener(productoItem)
+
 
             }
             binding.productoCard.setOnClickListener{
