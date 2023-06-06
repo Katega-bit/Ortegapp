@@ -15,6 +15,7 @@ import com.example.ortegapp_font.model.Producto
 import com.example.ortegapp_font.model.ProductoResponse
 import com.example.ortegapp_font.repository.ProductoRepository
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
     private val repository = ProductoRepository()
@@ -51,5 +52,13 @@ class HomeViewModel : ViewModel() {
         }
 
     }
+
+
+    suspend fun fetchMeLikes() : List<Producto>{
+            val response =  repository.getMyLikes(tokenManager.getToken()!!)
+        return response.body()?.content!!
+
+    }
+
 
 }

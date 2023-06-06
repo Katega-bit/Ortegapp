@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="mainColor">#8484A4</color>
     <color name="red">#AA0000</color>
+
+    <color name="ligthGrat">#EDEDED</color>
+
 </resources>

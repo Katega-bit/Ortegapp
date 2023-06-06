@@ -10,5 +10,5 @@ data class Producto(
     @SerializedName("descripcion" ) var descripcion : String?           = null,
     @SerializedName("precio"      ) var precio      : Double?           = null,
     @SerializedName("likes"       ) var likes       : ArrayList<UserResponse> = arrayListOf(),
-    @SerializedName("comentarios" ) var comentarios : ArrayList<String> = arrayListOf()
+    @SerializedName("comentarios" ) var comentarios : ArrayList<CommentResponse> = arrayListOf()
 )
