@@ -36,7 +36,6 @@ class AdapterFavorite(var productoList: List<Producto> = emptyList<Producto>(),
 
     override fun onBindViewHolder(holder: AdapterFavorite.FavoriteViewHolder, position: Int) {
         holder.bind(productoList[position], likeListener, onItemSelected)
-       // notifyItemRemoved(position)
     }
 
     class FavoriteViewHolder(private val binding : ItemListFavoriteBinding) : RecyclerView.ViewHolder(binding.root){
@@ -49,6 +48,7 @@ class AdapterFavorite(var productoList: List<Producto> = emptyList<Producto>(),
                 likeListener(productoItem)
 
             }
+
             binding.productoCard.setOnClickListener{
 
                 onItemSelected(productoItem.id!!)

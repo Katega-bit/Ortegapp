@@ -66,7 +66,6 @@ class FavoriteFragment : Fragment() {
             }
             adapter.updateList(response.content)
 
-
         }
     }
 
