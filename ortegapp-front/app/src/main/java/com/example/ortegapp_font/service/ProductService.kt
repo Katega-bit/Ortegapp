@@ -1,9 +1,11 @@
 package com.example.ortegapp_font.service
 
+import com.example.ortegapp_font.model.CommentRequest
 import com.example.ortegapp_font.model.CommentResponse
 import com.example.ortegapp_font.model.Producto
 import com.example.ortegapp_font.model.ProductoResponse
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -25,5 +27,5 @@ interface ProductService {
     suspend fun likeProduct(@Path("id")id : Int, @Header("Authorization") token: String) : Response<Producto>
 
     @POST("/producto/{id}/comentario/")
-    suspend fun commentProduct(@Path("id")id : Int, @Header("Authorization") token: String) : Response<Producto>
+    suspend fun commentProduct(@Path("id")id : Int, @Header("Authorization") token: String, @Body commentRequest: CommentRequest) : Response<Producto>
 }

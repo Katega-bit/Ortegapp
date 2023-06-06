@@ -54,7 +54,6 @@ class AdapterProducto(
             Picasso.get().load(productoItem.foto).into(binding.productoImage)
             binding.productoName.text = productoItem.nombre
           var checked = false
-
             binding.likeButton.setOnClickListener {
                 likeListener(productoItem)
                 if (!checked){

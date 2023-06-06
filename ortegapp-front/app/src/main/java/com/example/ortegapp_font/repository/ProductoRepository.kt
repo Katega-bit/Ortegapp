@@ -2,6 +2,7 @@ package com.example.ortegapp_font.repository
 
 import android.util.Log
 import com.example.ortegapp_font.core.RetrofitHelper
+import com.example.ortegapp_font.model.CommentRequest
 import com.example.ortegapp_font.model.CommentResponse
 import com.example.ortegapp_font.model.Producto
 import com.example.ortegapp_font.model.ProductoResponse
@@ -37,8 +38,8 @@ class ProductoRepository {
         return response
     }
 
-    suspend fun postComment(id : Int, token : String) : Response<Producto>{
-        val response = retrofit.commentProduct(id, "Bearer $token")
+    suspend fun postComment(id : Int, token : String, comment : String) : Response<Producto>{
+        val response = retrofit.commentProduct(id, "Bearer $token", CommentRequest(comment))
         Log.e("Comment", response.body().toString())
         return response
     }

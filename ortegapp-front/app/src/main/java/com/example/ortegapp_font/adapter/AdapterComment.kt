@@ -3,13 +3,15 @@ package com.example.ortegapp_font.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ortegapp_font.databinding.FragmentDetailProductoBinding
 import com.example.ortegapp_font.databinding.ItemCommentBinding
 import com.example.ortegapp_font.databinding.ItemListFavoriteBinding
 import com.example.ortegapp_font.model.CommentResponse
 import com.example.ortegapp_font.model.Producto
+import com.example.ortegapp_font.repository.ProductoRepository
 import com.squareup.picasso.Picasso
 
-class AdapterComment(var commentList : List<CommentResponse> =  emptyList()
+class AdapterComment(var commentList : List<CommentResponse> =  emptyList(),
 ) : RecyclerView.Adapter<AdapterComment.CommentViewHolder>() {
 
 
@@ -44,6 +46,7 @@ class AdapterComment(var commentList : List<CommentResponse> =  emptyList()
             binding.commentUser.text = commentItem.fullname
 
         }
+
 
 
     }

@@ -1,5 +1,6 @@
 package com.example.ortegapp_font.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,17 +10,15 @@ import com.example.ortegapp_font.databinding.ItemListProductoBinding
 import com.example.ortegapp_font.model.Producto
 import com.squareup.picasso.Picasso
 
-class AdapterFavorite(var productoList: List<Producto> = emptyList(),
+class AdapterFavorite(var productoList: List<Producto> = emptyList<Producto>(),
                       val likeListener: (Producto) -> Unit,
                       val onItemSelected : (Int) -> Unit)
     : RecyclerView.Adapter<AdapterFavorite.FavoriteViewHolder>() {
 
     fun updateList(productoList : List<Producto>){
-        if (productoList != null){
-            this.productoList = productoList
-            notifyDataSetChanged()
+        this.productoList = productoList
+        notifyDataSetChanged()
 
-        }
     }
 
 
@@ -37,6 +36,7 @@ class AdapterFavorite(var productoList: List<Producto> = emptyList(),
 
     override fun onBindViewHolder(holder: AdapterFavorite.FavoriteViewHolder, position: Int) {
         holder.bind(productoList[position], likeListener, onItemSelected)
+       // notifyItemRemoved(position)
     }
 
     class FavoriteViewHolder(private val binding : ItemListFavoriteBinding) : RecyclerView.ViewHolder(binding.root){
