@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,6 +41,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+       // setFilters()
 
     }
 
@@ -101,6 +104,31 @@ class HomeFragment : Fragment() {
         fragmentTransaction.replace(R.id.container, fragmentoDetalle)
         fragmentTransaction.addToBackStack(null) // Opcional: agregar a la pila de retroceso
         fragmentTransaction.commit()
+    }
+
+
+    fun setFilters(){
+        val snpinner = binding.filter
+
+        val options = arrayOf("Todo", "Snacks", "Gomitas", "Chicles", "Caramelos")
+
+        snpinner.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, options)
+
+        binding.filter.onItemSelectedListener= object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
     }
 
 

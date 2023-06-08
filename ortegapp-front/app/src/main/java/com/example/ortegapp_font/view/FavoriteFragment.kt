@@ -21,6 +21,7 @@ import com.example.ortegapp_font.viewmodel.HomeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class FavoriteFragment : Fragment() {
@@ -72,6 +73,10 @@ class FavoriteFragment : Fragment() {
     fun likeProduct(producto : Producto){
         CoroutineScope(Dispatchers.IO).launch {
             viewModelHome.likeProduct(producto.id!!)
+            withContext(Dispatchers.Main){
+                viewModel.fetchMeLikes()
+
+            }
 
         }
 

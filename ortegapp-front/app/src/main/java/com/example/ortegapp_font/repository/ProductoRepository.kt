@@ -43,4 +43,10 @@ class ProductoRepository {
         Log.e("Comment", response.body().toString())
         return response
     }
+
+    suspend fun getProductByCategory(categoria : String, token : String): Response<ProductoResponse>{
+        val response = retrofit.getProductsByCategory(categoria, "Bearer $token")
+        Log.e("category", response.body().toString())
+        return response
+    }
 }
