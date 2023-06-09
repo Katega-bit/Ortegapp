@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
-       // setFilters()
+       setFilters()
 
     }
 
@@ -121,7 +121,24 @@ class HomeFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                TODO("Not yet implemented")
+                Toast.makeText(requireContext(),
+                            options[position], Toast.LENGTH_SHORT).show()
+
+                if (options[position] == "Todo"){
+                    fetchProduct()
+                }
+                viewModel.fetchProductByCategory(options[position])
+                viewModel.productoLiveData.observe(viewLifecycleOwner){response ->
+                    if (response == null) {
+                        Toast.makeText(requireContext(), "Network call fail", Toast.LENGTH_LONG)
+                        return@observe
+                    }
+
+                    adapter.updateList(response.content)
+
+                }
+
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
