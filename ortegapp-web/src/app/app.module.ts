@@ -14,9 +14,13 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HelpComponent } from './pages/help/help.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MaterialsImportModule } from './materials-import/materials-import.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent, AboutComponent, HelpComponent, NotFoundComponent],
+  declarations: [AppComponent, HomeComponent, ProfileComponent, AboutComponent, HelpComponent, NotFoundComponent, LoginPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +30,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    FormsModule,
+    HttpClientModule,
+    MaterialsImportModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent],
