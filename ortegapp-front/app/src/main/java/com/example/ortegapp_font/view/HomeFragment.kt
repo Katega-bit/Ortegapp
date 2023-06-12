@@ -127,16 +127,19 @@ class HomeFragment : Fragment() {
                 if (options[position] == "Todo"){
                     fetchProduct()
                 }
-                viewModel.fetchProductByCategory(options[position])
-                viewModel.productoLiveData.observe(viewLifecycleOwner){response ->
-                    if (response == null) {
-                        Toast.makeText(requireContext(), "Network call fail", Toast.LENGTH_LONG)
-                        return@observe
+                else{
+                    viewModel.fetchProductByCategory(options[position])
+                    viewModel.productoLiveData.observe(viewLifecycleOwner){response ->
+                        if (response == null) {
+                            Toast.makeText(requireContext(), "Network call fail", Toast.LENGTH_LONG)
+                            return@observe
+                        }
+
+                        adapter.updateList(response.content)
+
                     }
-
-                    adapter.updateList(response.content)
-
                 }
+
 
 
             }
