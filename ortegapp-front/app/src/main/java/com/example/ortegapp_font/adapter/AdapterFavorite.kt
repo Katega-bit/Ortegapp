@@ -47,6 +47,7 @@ class AdapterFavorite(var productoList: List<Producto> = emptyList<Producto>(),
             binding.likeButton.setOnClickListener {
                 likeListener(productoItem)
 
+
             }
 
             binding.productoCard.setOnClickListener{

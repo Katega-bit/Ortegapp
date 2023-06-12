@@ -60,5 +60,13 @@ class HomeViewModel : ViewModel() {
 
     }
 
+    fun fetchProductByCategory(categoria : String){
+
+        viewModelScope.launch {
+            val response = repository.getProductByCategory(categoria, tokenManager.getToken()!!)
+            _productoLiveData.postValue(response.body())
+        }
+    }
+
 
 }

@@ -28,4 +28,7 @@ interface ProductService {
 
     @POST("/producto/{id}/comentario/")
     suspend fun commentProduct(@Path("id")id : Int, @Header("Authorization") token: String, @Body commentRequest: CommentRequest) : Response<Producto>
+
+    @GET("/producto/tipo/{categoria}")
+    suspend fun getProductsByCategory(@Path("categoria") categoria : String, @Header("Authorization") token: String) : Response<ProductoResponse>
 }

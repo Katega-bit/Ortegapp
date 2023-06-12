@@ -106,4 +106,6 @@ class DetailProductoFragment : Fragment() {
         }
 
     }
+
+
 }
