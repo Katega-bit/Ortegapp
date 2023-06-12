@@ -15,7 +15,7 @@ VS Code
 ortegapp-front/.idea/
 
 # Node
-/node_modules
+ortegapp-web/node_modules
 npm-debug.log
 yarn-error.log
 
