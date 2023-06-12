@@ -14,3 +14,9 @@ VS Code
 .vscode/
 ortegapp-front/.idea/
 
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+
