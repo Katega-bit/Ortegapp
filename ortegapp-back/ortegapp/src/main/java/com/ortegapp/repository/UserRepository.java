@@ -5,6 +5,7 @@ import com.ortegapp.model.User;
 import org.hibernate.annotations.Parameter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,9 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<User, UUID>, JpaSpecificationExecutor<User> {
 
     Optional<User> findFirstByUsername(String username);
+
+    @EntityGraph("user-likes")
+    Optional<User> findById(UUID id);
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 

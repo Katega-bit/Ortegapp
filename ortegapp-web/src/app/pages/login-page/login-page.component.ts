@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/AuthService';
 import { TokenStorageService } from 'src/app/service/token-storage-service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-page',
