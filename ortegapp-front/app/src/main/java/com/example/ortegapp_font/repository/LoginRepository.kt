@@ -3,6 +3,7 @@ package com.example.ortegapp_font.repository
 import android.util.Log
 import com.example.ortegapp_font.core.RetrofitHelper
 import com.example.ortegapp_font.model.LoginRequest
+import com.example.ortegapp_font.model.PasswordChange
 import com.example.ortegapp_font.model.RegisterRequest
 import com.example.ortegapp_font.model.RegisterResponse
 import com.example.ortegapp_font.model.UserResponse
@@ -50,6 +51,20 @@ class LoginRepository {
         Log.e("register", response.body().toString())
         return response.body()!!
 
+    }
+
+    suspend fun changePassword(password: String, repeatPassword : String, oldPassword : String,token : String): UserResponse? {
+
+        val response =  retrofit.getRetrofit().create(LoginService::class.java)
+            .changePassword(PasswordChange(oldPassword, password, repeatPassword),"Bearer "+token )
+        Log.e("password", response.body().toString())
+        if (response.isSuccessful){
+            return response.body()!!
+
+        }
+        else{
+           return null
+        }
     }
 
 }

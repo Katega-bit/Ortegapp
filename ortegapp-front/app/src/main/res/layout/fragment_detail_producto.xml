@@ -122,7 +122,7 @@
 
                 <EditText
                     android:id="@+id/commentBox"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:inputType="textMultiLine"
                     android:background="@drawable/comment_box"
