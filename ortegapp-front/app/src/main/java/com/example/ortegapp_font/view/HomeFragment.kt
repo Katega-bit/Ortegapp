@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ortegapp_font.R
@@ -58,12 +59,14 @@ class HomeFragment : Fragment() {
     fun fetchProduct(){
         viewModel.initToken(requireContext())
         viewModel.fetchProductos()
+        binding.progressBar.isVisible= true
         viewModel.productoLiveData.observe(viewLifecycleOwner) { response ->
             if (response == null) {
                 Toast.makeText(requireContext(), "Network call fail", Toast.LENGTH_LONG)
                 return@observe
             }
             adapter.updateList(response.content)
+            binding.progressBar.isVisible= false
 
             nombreRandom(response)
         }
@@ -128,6 +131,7 @@ class HomeFragment : Fragment() {
                     fetchProduct()
                 }
                 else{
+                    binding.progressBar.isVisible= true
                     viewModel.fetchProductByCategory(options[position])
                     viewModel.productoLiveData.observe(viewLifecycleOwner){response ->
                         if (response == null) {
@@ -136,6 +140,7 @@ class HomeFragment : Fragment() {
                         }
 
                         adapter.updateList(response.content)
+                        binding.progressBar.isVisible= false
 
                     }
                 }
