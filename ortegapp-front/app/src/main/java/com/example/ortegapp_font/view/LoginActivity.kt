@@ -46,6 +46,12 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+                else{
+                    bindind.etEmail.error = "Usuario o contraseña incorrectos"
+                    bindind.etPassword.error = "Usuario o contraseña incorrectos"
+                }
+
+
     }
 
     fun navigateToRegister(){

@@ -43,6 +43,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         logout()
+        changePaswword()
         CoroutineScope(Dispatchers.IO).launch{
             withContext(Dispatchers.Main){
                 init()
@@ -68,6 +69,15 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
+    }
+
+    fun changePaswword(){
+        binding.option1.setOnClickListener {
+            val fragmentTransaction = parentFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.container, PasswordFragment())
+            fragmentTransaction.commit()
+        }
+
     }
 
 

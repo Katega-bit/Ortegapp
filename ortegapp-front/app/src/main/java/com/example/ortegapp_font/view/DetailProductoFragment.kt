@@ -84,7 +84,6 @@ class DetailProductoFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 repository.postComment(idProducto, tokenManager.getToken()!!, binding.commentBox.text.toString())
             }
-            adapterComment.notifyDataSetChanged()
         }
     }
 

@@ -21,13 +21,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"/>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productoList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             tools:listitem="@layout/item_list_producto"/>
 
     </LinearLayout>
