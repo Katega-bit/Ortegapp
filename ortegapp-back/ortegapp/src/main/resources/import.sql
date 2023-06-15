@@ -6,5 +6,14 @@ insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('1', 
 insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('2', 'Gusanitos', 'https://www.golosinasysnacks.com/11213-large_default/risi-gusanitos-30-bolsas-de-35g.jpg', 'Snacks', 'Lorem ipsum', '15.0');
 insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('3', 'Chicles menta click', 'https://m.media-amazon.com/images/I/81ib1gHmznL._AC_SL1500_.jpg', 'Chicles', 'Lorem ipsum', '8.0');
 insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('4', 'Match Ball', 'https://www.golosinasysnacks.com/11185-thickbox_default/risi-match-ball-20-bolsas-de-30g.jpg', 'Snacks', 'Lorem ipsum', '12.5');
-insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('5', 'Tiburones', 'https://tododulce.es/wp-content/uploads/2021/04/1830435.jpg', 'Gomitas', 'Lorem ipsum', '17.5');
+insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('5', 'Tiburones', 'https://tododulce.es/wp-content/uploads/2021/04/1830435.jpg', 'Gomitas', 'Lorem ipsum', '12.5');
+insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('6', 'Vampiro Fresa', 'https://m.media-amazon.com/images/I/41c3j6FjAsL._AC_.jpg', 'Caramelos', 'Lorem ipsum', '10.5');
+insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('7', 'Pictolin Menta', 'https://m.media-amazon.com/images/I/810vhVEVXQL._AC_UF1000,1000_QL80_.jpg', 'Caramelos', 'Lorem ipsum', '9.5');
+insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('8', 'Buscalios', 'https://www.golosinasysnacks.com/11200-medium_default/risi-buscalios-25-bolsas-de-35g.jpg', 'Snacks', 'Lorem ipsum', '8.5');
+insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('9', 'Tejitas', 'https://www.golosinasysnacks.com/11191-home_default/risi-tejitas-familiar-8-bolsas-de-110g.jpg', 'Snacks', 'Lorem ipsum', '8.5');
+insert into producto (id, nombre, foto, tipo, descripcion, precio) values ('10', 'Buscalios', 'https://www.golosinasysnacks.com/11200-medium_default/risi-buscalios-25-bolsas-de-35g.jpg', 'Snacks', 'Lorem ipsum', '8.5');
+
+
+
+
 

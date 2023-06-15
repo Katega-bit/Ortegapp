@@ -33,7 +33,7 @@ public class Producto {
             joinColumns = @JoinColumn(name = "FK_PRODUCT", nullable = false),
             inverseJoinColumns = @JoinColumn(name="FK_USER", nullable = false)
     )
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<User> likes = new HashSet<>();
     @OneToMany
     private List<Comentario> comentarios = new ArrayList<>();

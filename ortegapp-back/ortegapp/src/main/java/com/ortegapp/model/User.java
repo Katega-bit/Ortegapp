@@ -27,6 +27,14 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@NamedEntityGraph(
+        name = "user-likes",
+        attributeNodes = {
+                @NamedAttributeNode(
+                        value = "likes"
+                )
+        }
+)
 public class User implements UserDetails {
 
     // Usamos UUID como ID de los usuarios
@@ -56,7 +64,7 @@ public class User implements UserDetails {
     private String avatar;
 
     private String fullName;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<Producto> likes = new HashSet<>();
 
     private String telefono;

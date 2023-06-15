@@ -37,6 +37,7 @@ import java.util.Optional;
 @RequestMapping("/producto")
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ProductoController {
     private final ProductoService productoService;
 
