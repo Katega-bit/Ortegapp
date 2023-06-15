@@ -21,8 +21,9 @@ Este es un proyecto práctico para el desarrollo de una API REST en lenguaje Jav
 
 También se ha prácticado el manejo de **PostMan**, **Swagger** y la metodología ágil **SCRUM** para el reparto de tareas a través la ramificación de estas con **GitHub**.
 
-El proyecto trata de realizar una API REST para la gestión de una operación de recaudación de donaciones de alimentos de un colegio, el control y gestión de esos alimentos, el reparto y gestión de los destinatarios. Además podrá incorporar un ranking para conocer cuáles han sido las clases más solidarias del colegio.
+El proyecto trata de realizar una API REST para la gestion de una app destinada a una pequeña empresa de golosinas y snacks
 
+enlace presentacion : https://view.genial.ly/64874f5970addb00198488b3/video-presentation-ortegapp
 
 
 Se pueden realizar las siguientes funcionalidades: 	:point_right:
